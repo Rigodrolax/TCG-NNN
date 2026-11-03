@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NNN 2026 — Cartes de Balade92 (boosters & classeur)
 // @namespace    nnn2026-cartes
-// @version      2.14.0
+// @version      2.14.2
 // @description  Gagne des boosters de cartes illustrées par Balade92 en postant sur le topic No Nut November 2026, ouvre-les et range tes cartes dans un classeur.
 // @match        https://www.jeuxvideo.com/forums/*
 // @grant        GM_getValue
@@ -14,6 +14,8 @@
 // @connect      identitytoolkit.googleapis.com
 // @connect      securetoken.googleapis.com
 // @run-at       document-idle
+// @updateURL    https://github.com/Rigodrolax/TCG-NNN/raw/refs/heads/main/nnn-cartes-balade92.user.js
+// @downloadURL  https://github.com/Rigodrolax/TCG-NNN/raw/refs/heads/main/nnn-cartes-balade92.user.js
 // ==/UserScript==
 
 (function () {
@@ -904,6 +906,66 @@
   .du-info img{width:auto!important;height:min(82vh,860px);max-width:52vw}
   .du-info .in{max-width:96vw!important}
   @media (hover:none){.du-loupe{display:none}}
+
+  /* =============== TÉLÉPHONE (écrans de moins de 640 px de large : la version PC n'est pas touchée) =============== */
+  @media (max-width:640px){
+    .bb-win{width:100vw;height:100%;max-height:100dvh;border-radius:0;border:0}
+    .bb-head{flex-wrap:wrap;gap:8px;padding:10px 12px}
+    .bb-head h2{font-size:17px}
+    .bb-head > div:first-child{flex:1;min-width:0}
+    .bb-tabs{order:5;width:100%;margin-left:0}
+    .bb-tab{flex:1;padding:8px 4px;font-size:13px}
+    .bb-tab i{margin-left:3px;padding:1px 5px}
+    .bb-x{width:34px;height:34px;font-size:16px}
+    .bb-body{padding:12px}
+    .bb-pile{height:300px}
+    .bb-kinds{grid-template-columns:1fr}
+    .dh-sel{flex-wrap:wrap;gap:6px}
+    .dh-slot{width:58px}
+    .dh-plus{font-size:16px}
+    .dh-card,.dh-card img{width:64px}
+
+    /* arène */
+    .bb-duel,.bb-duel.logon{grid-template-columns:1fr!important;grid-template-rows:auto minmax(0,1fr)!important}
+    .du-head{flex-wrap:wrap;gap:6px 8px!important;padding:8px 10px!important}
+    .du-title{flex:1 1 auto;min-width:0;font-size:13px!important;overflow:hidden;text-overflow:ellipsis}
+    .du-turn,.du-turn.mine{white-space:nowrap;font-size:12px!important;padding:4px 10px!important}
+    .du-last{order:9;flex:1 1 100%;border-left:0;padding-left:0;font-size:12px;white-space:normal;max-height:2.6em;overflow:hidden}
+    .du-head .bb-btn{padding:6px 9px;font-size:12px}
+    .du-head .bb-x{width:30px;height:30px;font-size:14px}
+    .bb-duel.logon .du-log{position:absolute;left:0;right:0;top:auto;bottom:0;height:45vh;z-index:40;background:#14121d;border-top:1px solid #33344a;overflow:auto}
+    .du-main{display:flex!important;flex-direction:column;gap:6px!important;padding:6px 8px 10px!important;overflow-y:auto;overflow-x:hidden}
+    .du-row.opp{flex-wrap:wrap;gap:6px 10px;padding:4px 8px!important}
+    .du-row .du-who{min-width:0;font-size:13px}
+    .du-field{flex:none;gap:6px!important;align-items:flex-start!important;justify-content:center;overflow:visible}
+    .du-act{flex:1 1 0;max-width:calc(50% - 22px);height:auto;justify-content:flex-start}
+    .du-card,.du-act.me .du-card,.du-empty{flex:none!important;width:100%!important;max-width:min(42vw,calc(30vh * 961 / 1336))!important;height:auto!important;min-height:0!important}
+    .du-vs{font-size:20px!important;align-self:center;flex:none}
+    .du-plate{width:100%!important;max-width:min(42vw,200px);padding:4px 7px 4px 11px;border-width:2px}
+    .du-plate .pl-top b{font-size:12px}
+    .du-plate .tp{font-size:9px;padding:1px 5px}
+    .du-plate .pl-num{font-size:13px}
+    .du-plate .pl-num small{font-size:10px}
+    .du-badges .bd{font-size:10px;padding:1px 5px}
+    .du-help{flex-wrap:wrap;gap:4px;font-size:11px;min-height:0}
+    .du-help .st{padding:3px 8px}
+    .du-help .st b{width:16px;height:16px;font-size:10px}
+    .du-help .ar{display:none}
+    .du-bottom{grid-template-columns:1fr!important;gap:8px}
+    .du-bottom .du-row.me{padding:6px 8px 10px!important;gap:2px 10px}
+    .du-actions{gap:6px;min-height:0}
+    .du-atk{min-width:0!important;max-width:none!important;width:100%;padding:7px 10px}
+    .du-atk .ic{font-size:20px}
+    .du-actions > .bb-btn{flex:1;padding:9px 8px}
+    .du-call{font-size:18px!important}
+    .du-pick{justify-content:flex-start;overflow-y:auto;padding:14px 8px}
+    .du-pick h3{font-size:16px;text-align:center}
+    .du-pick-row{gap:10px}
+    .du-pick-c,.du-pick-c img{width:min(40vw,150px)}
+    .du-info{padding:10px;align-items:flex-start;overflow-y:auto}
+    .du-info .in{flex-direction:column;align-items:center;gap:12px;padding:12px}
+    .du-info img{height:auto!important;width:min(70vw,320px)!important;max-width:none!important}
+  }
   `;
   document.head.appendChild(Object.assign(document.createElement('style'), { textContent: css, id: 'bb-style' }));
   document.documentElement.style.setProperty('--bb-cardback', `url("${CARDBACK_IMG}")`);
